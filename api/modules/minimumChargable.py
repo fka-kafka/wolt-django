@@ -12,7 +12,7 @@ def minimumChargable(cartValue: int,
                      hour: int):
     if distance <= 1000:
         distanceCharge = 2
-    elif (((distance - 1000) % 500) == 0 & distance != 0):
+    elif (((distance - 1000) % 500) == 0 and distance != 0):
         distanceCharge = 2 + (((distance - 1000) / 500) * 2)
     elif (round((distance - 1000) / 1000) > (distance - 1000) / 1000):
         distanceCharge = 2 + (round((distance - 1000) / 1000) * 2)
@@ -26,7 +26,7 @@ def minimumChargable(cartValue: int,
     else:
         surcharge = 0
 
-    if (day is "Friday", 15 <= hour <= 18):
+    if (day is "Friday" and 15 <= hour <= 18):
         total = ((surcharge + distanceCharge + (10 - cartValue))) * 1.2
     else:
         total = surcharge + distanceCharge + (10 - cartValue)

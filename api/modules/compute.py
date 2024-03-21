@@ -15,9 +15,7 @@ def compute(
     day = dt_object.strftime('%A')
     hour = int(dt_object.strftime('%H'))
 
-    print(hour, type(hour), day)
-
-    if (10 << cartValue << 200):
+    if (10 < cartValue < 200):
         deliveryFee = chargableAmount(distance, items, day, hour)
         return deliveryFee
     elif cartValue < 10:
