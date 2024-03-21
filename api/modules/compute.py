@@ -1,10 +1,10 @@
 from .amountChargable import chargableAmount
-from .minimumChargable import minimumChargable
+from .minimumChargable import MinCharge #minimumChargable
 import datetime
 
 
 def compute(
-    cartValue: int,
+    cart_value: int,
     distance: int,
     items: int,
     time: str
@@ -15,11 +15,12 @@ def compute(
     day = dt_object.strftime('%A')
     hour = int(dt_object.strftime('%H'))
 
-    if (10 < cartValue < 200):
+    if (10 < cart_value < 200):
         deliveryFee = chargableAmount(distance, items, day, hour)
         return deliveryFee
-    elif cartValue < 10:
-        deliveryFee = minimumChargable(cartValue, distance, items, day, hour)
-        return deliveryFee
+    elif cart_value < 10:
+        #deliveryFee = minimumChargable(cart_value, distance, items, day, hour)
+        result = MinCharge(cart_value, distance, items, day, hour)
+        return result.deliveryFee()
     else:
         return 0

@@ -37,3 +37,4 @@ def chargableAmount(distance: int,
     else:
         deliveryFee = total
         return deliveryFee
+
