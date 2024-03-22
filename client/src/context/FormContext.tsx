@@ -23,7 +23,7 @@ export const initFormData: FormStateType = {
 
 export const FormProvider = ({ children }: ChildrenType) => {
   const [formData, setFormData] = useState<FormStateType>(initFormData);
-  const [deliveryFee, setDeliveryFee] = useState<number | boolean>(0);
+  const [deliveryFee, setDeliveryFee] = useState<number | string>(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -50,15 +50,22 @@ export const FormProvider = ({ children }: ChildrenType) => {
 
   const deliveryFeeContent =
     typeof deliveryFee === "number" ? (
-      <div className="result">
-        <p>Delivery Fee: € {deliveryFee}</p>
-      </div>
+      deliveryFee <= 15 ? (
+        <div>
+          <p className="result"><span className="result-accepted">Delivery Fee:</span> € {deliveryFee}</p>
+        </div>
+      ) : (
+        <div>
+          <p className="result">
+            <span className="result-rejected">Delivery Fee:</span> € {deliveryFee}. <br/>
+            This exceeds the maximum allowed delivery fee of € 15. <br/> 
+            Revise cart or consider a different delivery option.
+          </p>
+        </div>
+      )
     ) : (
-      <div className="result">
-        <p>
-          Delivery Fee exceeded. <br /> Review cart or explore different
-          delivery options.
-        </p>
+      <div>
+        <p className="error"><span className="error-title">Error:</span> {deliveryFee}</p>
       </div>
     );
 

@@ -1,8 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
 
 :root {
-  font-family: "Poppins", "Cambria", "Cochin", Georgia, Times, "Times New Roman",
-    serif;
+  font-family:'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   box-sizing: border-box;
   height: 100%;
   width: 100%;
@@ -47,13 +46,13 @@ h1 {
   &-distance,
   &-items,
   &-time {
-    font: .8 "Poppins";
+    font: 0.8 "Poppins";
 
     ::placeholder {
       font-family: "Poppins";
     }
   }
-  
+
   button {
     margin: 1rem 7rem;
     font-weight: 500;
@@ -62,6 +61,26 @@ h1 {
 }
 
 .result {
+  font-size: medium;
   margin: 0 2vw 1rem 2vw;
   text-align: center;
+
+  &-accepted {
+    font-weight: bold;
+    color: rgba(0, 128, 0, 0.725);
+  }
+  &-rejected {
+    font-weight: bold;
+    color: orange;
+  }
+}
+
+.error {
+  margin: 0 2vw 1rem 2vw;
+  text-align: center;
+
+  &-title {
+    font-weight: bold;
+    color: red;
+  }
 }

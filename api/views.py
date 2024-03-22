@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
 import json
 from .modules.compute import compute
@@ -7,14 +7,21 @@ from .modules.compute import compute
 @csrf_exempt
 def api(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
+        if request.body:
+            data = json.loads(request.body)
 
-        cartValue, distance, items, time = int(data['cartValue']), int(
-            data['distance']), int(data['items']), data['time']
+            if len(data) == 4:
+                cart_value, distance, items, time = float(data['cartValue']), int(
+                    data['distance']), int(data['items']), data['time']
 
-        result = compute(cartValue, distance, items, time)
-        print(result)
-
-        return HttpResponse(request.body)
+                if (type(cart_value) == float and type(distance) == int and type(items) == int and type(time) == str):
+                    result = compute(cart_value, distance, items, time)
+                    return JsonResponse(json.dumps({"delivery_fee": result}), safe=False)
+                else:
+                    return JsonResponse(json.dumps({"delivery_fee": "A parameter is of an invalid type."}), safe=False)
+            else:
+                return JsonResponse(json.dumps({"delivery_fee": f"Expected 4 parameters. Got {len(data)}."}), safe=False)
+        else:
+            return JsonResponse(json.dumps({"delivery_fee": "Parameters missing from request body."}), safe=False)
     else:
-        return HttpResponse('Forbidden')
+        return HttpResponseForbidden('Forbidden')

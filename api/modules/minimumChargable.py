@@ -2,7 +2,7 @@ distanceCharge: float | int = 0
 surcharge: float | int = 0
 maxDeliveryFee: int = 15
 total: float | int = 0
-deliveryFee: float | int | bool = 0
+deliveryFee: float | int = 0
 
 # Function based logic
 # def minimumChargable(cart_value: int,
@@ -38,12 +38,13 @@ deliveryFee: float | int | bool = 0
 #         deliveryFee = total
 #         return deliveryFee
 
-
 # Class based logic
+
+
 class MinCharge:
     def __init__(self, cart_value: int, distance: int, items: int, day: str, hour: int) -> None:
-        # Assertions placed purely for educational purposes
-        assert type(cart_value) == int, f"Cart value {cart_value} is invalid."
+        # Assertions placed purely for educational purposes. Type checking done in views.py
+        assert type(cart_value) == float, f"Cart value {cart_value} is invalid."
         assert type(distance) == int, f"Distance {distance} is invalid."
         assert type(items) == int, f"Items {items} is invalid."
         assert type(day) == str, f"Day {day} is invalid."
@@ -104,5 +105,5 @@ class MinCharge:
 
     def deliveryFee(self):
         total = self.__sum_total()
-        deliveryFee = False if total > maxDeliveryFee else total
+        deliveryFee = total
         return deliveryFee

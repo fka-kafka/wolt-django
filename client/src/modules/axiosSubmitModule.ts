@@ -11,8 +11,12 @@ const axiosCall = async (data: string) => {
       responseType: "json",
     })
     .then((res) => {
-      console.log(res.data)
-      return res.data.deliveryFee;
+      if (res && res.data) {
+        const result = JSON.parse(res.data);
+        return result.delivery_fee;
+      } else {
+        throw new Error("Internal server error. Invalid response.", )
+      }
     });
 
   return responseData;
