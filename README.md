@@ -123,12 +123,12 @@ Example:
 
   ```bash
   pip install -r requirements.txt
-  cd server/
   ```
 
 - In "settings.py", toggle "DEBUG = True" to "False" if set.
   Navigate back to the root directory and run
 
   ```bash
+  cd server/
   ./manage.py runserver
   ```
