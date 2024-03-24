@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="{% static 'vite.svg' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if debug %}
+    <title>Delivery Fee Calculator (dev)</title>
+    <script type="module">
+      import RefreshRuntime from 'http://localhost:3500/@react-refresh'
+      RefreshRuntime.injectIntoGlobalHook(window)
+      window.$RefreshReg$ = () => {}
+      window.$RefreshSig$ = () => (type) => type
+      window.__vite_plugin_react_preamble_installed__ = true
+    </script>
+    <script type="module" src="http://localhost:3500/src/main.tsx"></script>
+    {% else %}
+    <title>Delivery Fee Calculator</title>
+    <script type="module" crossorigin src="{% static '/assets/js/index.min.js' %}"></script>
+    <link rel="stylesheet" crossorigin href="{% static '/assets/index.css' %}">
+    {% endif %}
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
