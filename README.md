@@ -61,37 +61,74 @@ Example:
 
 1. ### dev environment
 
-#### client
+- #### client setup
 
-```bash
-cd client/app/
-npm install
-npm run dev
-```
+  ```bash
+  cd client/app/
+  npm install
+  npm run dev
+  ```
 
-#### server
+- #### server setup
 
-```bash
-pip install -r requirements.txt
-cd server/
-```
+  - create a virtual environment and activate it
 
-In the "settings.py" file, toggle "DEBUG = False" to "True" if set
+  1. **Windows :**
 
-```bash
-./manage.py runserver
-```
+  ```bash
+  python -m venv .venv
+  source .venv\Scripts\activate
+  ```
+
+  2. **MacOS and Linux :**
+
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  ```
+
+  - In "settings.py", toggle "DEBUG = False" to "True" if set
+
+  - Install the dependencies
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+
+  - Start the server
+
+  ```bash
+  ./manage.py runserver
+  ```
 
 2. ### prod environment
 
-```bash
-pip install -r requirements.txt
-cd server/
-```
+- create a virtual environment and activate it
 
-In the "settings.py" file, toggle "DEBUG = True" to "False" if set.
-Navigate back to the root directory and run
+  1. **Windows :**
 
-```bash
-./manage.py runserver
-```
+  ````bash
+    python -m venv .venv
+    source .venv\Scripts\activate
+  ````
+
+  2. **MacOS and Linux :**
+
+  ```bash
+  python -m venv .venv
+  source .venv/bin/activate
+  ```
+
+- Install the dependencies
+
+  ```bash
+  pip install -r requirements.txt
+  cd server/
+  ```
+
+- In "settings.py", toggle "DEBUG = True" to "False" if set.
+  Navigate back to the root directory and run
+
+  ```bash
+  ./manage.py runserver
+  ```
